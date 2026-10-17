@@ -1,46 +1,121 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Feliz Cumpleaños</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muestra de amor</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+    .contador-amor {
+      margin: 30px 0 10px;
+      padding: 20px 12px;
+      text-align: center;
+      border-radius: 15px;
+      background: rgba(255, 105, 145, 0.12);
+      border: 1px solid rgba(255, 105, 145, 0.35);
+    }
+
+    .contador-amor h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #d6336c;
+    }
+
+    #tiempo-juntos {
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.8;
+      color: #c2185b;
+    }
+
+    .contador-amor .detalle {
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: 0.75;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="valentines-day">
-        <div class="envelope"></div>
-        <div class="heart"></div>
-        <div class="text">¡FELIZ <br>Cumpleaños!</div>
-        <div class="front"></div>
-    </div>
 
-    <div id="card">
-        <div class="side one">
-            <i class="fas fa-heart"></i>
-        </div>
-        <div class="side two">
-            <h2>🌷🌷🌷</h2>
-            <p>Querida [SAHIRA],</p>
-            <p>
-               a
-                
-            </p>
-            <p>
-                ¡Feliz Cumpleaños!
-            </p>
-            <p>
-                Con cariño,<br>
-                [Josue]
-            </p>
-        </div>
-    </div>
+  <div class="valentines-day">
+    <div class="envelope"></div>
+    <div class="heart"></div>
+    <div class="text">PARA:<br>Crismeilyn</div>
+    <div class="front"></div>
+  </div>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src="assets/js/main.js"></script>
+  <div id="card">
+    <div class="side one"></div>
+
+    <div class="side two">
+      <h2>Para mi amorcito</h2>
+
+      <p>Querida Crismeilyn...</p>
+
+      <p>
+        Uso este medio para decirte lo mucho que te amo
+        y para que veas mis capacidades informáticas...
+      </p>
+
+      <p>
+        Prometo valorarte y cuidarte siempre...
+        te ama: Josue ❤️
+      </p>
+
+      <!-- Contador privado de nuestro tiempo juntos -->
+      <div class="contador-amor">
+        <h3>Nuestro tiempo juntos ❤️</h3>
+
+        <div id="tiempo-juntos">
+          Calculando nuestro tiempo...
+        </div>
+
+        <div class="detalle">
+          Cada segundo contigo cuenta.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./script.js"></script>
+
+  <script>
+    // 23 de septiembre de 2026, a las 11:00 PM
+    // Hora local de República Dominicana.
+    const inicioRelacion = new Date(2026, 8, 23, 23, 0, 0);
+
+    function actualizarTiempoJuntos() {
+      const ahora = new Date();
+      const diferencia = ahora.getTime() - inicioRelacion.getTime();
+      const contador = document.getElementById("tiempo-juntos");
+
+      if (diferencia < 0) {
+        contador.textContent = "Nuestro tiempo comienza pronto ❤️";
+        return;
+      }
+
+      const totalSegundos = Math.floor(diferencia / 1000);
+
+      const dias = Math.floor(totalSegundos / 86400);
+      const horas = Math.floor((totalSegundos % 86400) / 3600);
+      const minutos = Math.floor((totalSegundos % 3600) / 60);
+      const segundos = totalSegundos % 60;
+
+      contador.textContent =
+        `${dias} días, ${horas} horas, ` +
+        `${minutos} minutos y ${segundos} segundos ❤️`;
+    }
+
+    actualizarTiempoJuntos();
+    setInterval(actualizarTiempoJuntos, 1000);
+  </script>
+
 </body>
-
 </html>
+```
