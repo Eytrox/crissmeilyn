@@ -1,170 +1,408 @@
+
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 
-#card {
-   height:500px;
-   width:800px;
-   margin:5em auto;
-   position: fixed;
-  top: -15px;
-   left: 25%;
-   display:flex;
-   visibility:hidden;
-}
-#card h2 {
-   font-size:3em;
-   margin:0;
-   color:pink;
-   text-align: center;
-}
-#card p {
-   font-size: 1.5em;
-   text-align: justify;
-   padding-left: 30px; /* Espacio en blanco a la izquierda */
-   padding-right: 30px; /* Espacio en blanco a la derecha */
+* {
+  box-sizing: border-box;
 }
 
-
-.side {
-   background:#eee;
-   height:550px;
-   width:400px;
-/*    border:1px solid red; */
-   padding:10px;
-}
-.side.one {
-   width:320px;
-   transform:skew(10deg,20deg);
-   background:linear-gradient(90deg, #fff, #fff 40%, #ddd);
-}
-.side.two {
-   transform:skew(10deg,-15deg);
-   background:linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 100vh;
-   font-family: 'Sacramento', cursive;
-   background-color: #f1e3d3;
-   overflow: hidden;
- }
- 
- .valentines-day {
-   position: relative;
-   cursor: pointer;
- }
- 
- .envelope {
-   position: relative;
-   filter: drop-shadow(0 0 25px rgba(0,0,0,.3));
- }
- 
- .envelope:before {
-   content:"";
-   position: absolute;
-   width:254px;
-   height:254px;
-   background-color: #ff9494;
-   transform: rotate(-45deg);
-   border-radius: 0 15px 0 0;
-   left:-37px;
-   top:-82px;
- }
- 
- .envelope:after {
-   content:"";
-   position: absolute;
-   background-color: #ff9494;
-   width:360px;
-   height:225px;
-   left:-90px;
-   top:45px;
- }
- 
- .heart {
-   position: relative;
-   background-color: #e01911;
-   display: inline-block;
-   height: 180px;
-   top:50px;
-   left:0;
-   transform: rotate(-45deg);
-   width:180px;
-   filter: drop-shadow(0 -10px 25px rgba(0,0,0,.3));
-   transition: .5s;
- }
-   
- .heart:before, .heart:after {
-   content:"";
-   background-color: #e01911;
-   border-radius:50%;
-   height: 180px;
-   width: 180px;
-   position: absolute;
-   }
-   
- .heart:before {
-   top:-100px;
-   left:0;}
-   
- .heart:after {
-   left:100px;
-   top:0;}
- 
- .front {
-   position: absolute;
-   width:0;
-   height:0;
-   border-right: 190px solid #fbd2d2;
-   border-top: 113px solid transparent;
-   border-bottom: 113px solid transparent;
-   top:44px;
-   left:80px;
-   z-index:4;
- }
- 
- .front:before {
-   content:"";
-   position: absolute;
-   width:0;
-   height:0;
-   border-left: 190px solid #fbd2d2;
-   border-top: 113px solid transparent;
-   border-bottom: 113px solid transparent;
-   top:-113px;
-   left:-170px;
- }
- 
- .front:after {
-   width:0;
-   height:0;
-   position: absolute;
-   content:"";
-   border-bottom: 150px solid #fce7e9;
-   border-right:180px solid transparent;
-   border-left: 180px solid transparent;
-   top:-36px;
-   left:-170px;
- }
- 
- .text {
-   position: absolute;
-   font-family: arial;
-   letter-spacing:5px;
-   text-align: center;
-   color: white;
-   z-index:2;
-   top:80px;
-   left:15px;
-   transition: .5s;
- }
- 
- .valentines-day:hover .heart {
-   transform: translateY(-50px) rotate(-45deg);
- }
- 
- .valentines-day:hover .text {
-   transform: translateY(-50px);
- }
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sacramento', cursive;
+  background-color: #f1e3d3;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* SOBRE */
+
+.valentines-day {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  transform-origin: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.envelope {
+  position: relative;
+  filter: drop-shadow(0 0 25px rgba(0, 0, 0, .3));
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  width: 254px;
+  height: 254px;
+  background-color: #ff9494;
+  transform: rotate(-45deg);
+  border-radius: 0 15px 0 0;
+  left: -37px;
+  top: -82px;
+}
+
+.envelope:after {
+  content: "";
+  position: absolute;
+  background-color: #ff9494;
+  width: 360px;
+  height: 225px;
+  left: -90px;
+  top: 45px;
+}
+
+/* CORAZÓN */
+
+.heart {
+  position: relative;
+  background-color: #e01911;
+  display: inline-block;
+  height: 180px;
+  width: 180px;
+  top: 50px;
+  left: 0;
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 -10px 25px rgba(0, 0, 0, .3));
+  transition: .5s;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: #e01911;
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+  position: absolute;
+}
+
+.heart:before {
+  top: -100px;
+  left: 0;
+}
+
+.heart:after {
+  left: 100px;
+  top: 0;
+}
+
+/* FRENTE DEL SOBRE */
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-right: 190px solid #fbd2d2;
+  border-top: 113px solid transparent;
+  border-bottom: 113px solid transparent;
+  top: 44px;
+  left: 80px;
+  z-index: 4;
+}
+
+.front:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 190px solid #fbd2d2;
+  border-top: 113px solid transparent;
+  border-bottom: 113px solid transparent;
+  top: -113px;
+  left: -170px;
+}
+
+.front:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 150px solid #fce7e9;
+  border-right: 180px solid transparent;
+  border-left: 180px solid transparent;
+  top: -36px;
+  left: -170px;
+}
+
+/* TEXTO DEL SOBRE */
+
+.text {
+  position: absolute;
+  font-family: Arial, sans-serif;
+  letter-spacing: 5px;
+  text-align: center;
+  color: white;
+  z-index: 5;
+  top: 80px;
+  left: 15px;
+  width: 220px;
+  transition: .5s;
+}
+
+@media (hover: hover) {
+  .valentines-day:hover .heart {
+    transform: translateY(-50px) rotate(-45deg);
+  }
+
+  .valentines-day:hover .text {
+    transform: translateY(-50px);
+  }
+}
+
+/* CARTA */
+
+#card {
+  width: 800px;
+  max-width: calc(100vw - 40px);
+  height: auto;
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: stretch;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.1);
+  transform-origin: center center;
+  z-index: 10;
+}
+
+#card .side {
+  background: #eee;
+  height: 550px;
+  width: 50%;
+  min-width: 0;
+  padding: 15px;
+}
+
+#card .side.one {
+  width: 40%;
+  flex-shrink: 0;
+  transform: skew(5deg, 8deg);
+  background: linear-gradient(90deg, #fff, #fff 40%, #ddd);
+}
+
+#card .side.two {
+  flex: 1;
+  transform: skew(3deg, -5deg);
+  background: linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+}
+
+#card h2 {
+  font-size: 3em;
+  line-height: 1.2;
+  margin: 0 0 15px;
+  color: #e78da4;
+  text-align: center;
+}
+
+#card p {
+  font-size: 1.5em;
+  line-height: 1.5;
+  text-align: justify;
+  padding: 0 15px;
+  margin: 15px 0;
+  overflow-wrap: anywhere;
+}
+
+/* CONTADOR */
+
+.contador-amor {
+  width: 100%;
+  max-width: 100%;
+  margin: 25px auto 10px;
+  padding: 20px 12px;
+  text-align: center;
+  border-radius: 15px;
+  background: rgba(255, 105, 145, .12);
+  border: 1px solid rgba(255, 105, 145, .35);
+  overflow-wrap: anywhere;
+}
+
+.contador-amor h3 {
+  margin: 0 0 12px;
+  font-family: 'Sacramento', cursive;
+  font-size: 25px;
+  line-height: 1.3;
+  color: #d6336c;
+}
+
+#tiempo-juntos {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.8;
+  color: #c2185b;
+  overflow-wrap: anywhere;
+}
+
+.contador-amor .detalle {
+  margin-top: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: .75;
+}
+
+/* TABLETS */
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    padding: 15px;
+  }
+
+  #card {
+    width: calc(100vw - 40px);
+    max-width: 760px;
+  }
+
+  #card .side {
+    height: min(550px, 78dvh);
+    padding: 12px;
+  }
+
+  #card h2 {
+    font-size: clamp(26px, 4vw, 40px);
+  }
+
+  #card p {
+    font-size: clamp(15px, 2vw, 20px);
+    padding: 0 8px;
+  }
+}
+
+/* TELÉFONOS */
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  .valentines-day {
+    transform: scale(.72);
+  }
+
+  #card {
+    width: calc(100vw - 28px);
+    max-width: 440px;
+    height: auto;
+    max-height: calc(100dvh - 24px);
+    min-height: 0;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .16);
+  }
+
+  #card .side.one {
+    display: none;
+  }
+
+  #card .side.two {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    flex: none;
+    padding: 22px 16px;
+    transform: none;
+    overflow: visible;
+    background: linear-gradient(145deg, #fff, #fff7f9);
+  }
+
+  #card h2 {
+    font-size: clamp(27px, 7vw, 34px);
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+
+  #card p {
+    font-size: 17px;
+    line-height: 1.65;
+    text-align: left;
+    padding: 0;
+    margin: 14px 0;
+  }
+
+  .contador-amor {
+    margin: 22px auto 0;
+    padding: 17px 10px;
+    border-radius: 12px;
+  }
+
+  .contador-amor h3 {
+    font-size: 23px;
+    margin-bottom: 10px;
+  }
+
+  #tiempo-juntos {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .contador-amor .detalle {
+    font-size: 11px;
+  }
+}
+
+/* TELÉFONOS PEQUEÑOS */
+
+@media screen and (max-width: 360px) {
+  #card {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+
+  #card .side.two {
+    padding: 18px 13px;
+  }
+
+  #card h2 {
+    font-size: 26px;
+  }
+
+  #card p {
+    font-size: 15px;
+  }
+
+  #tiempo-juntos {
+    font-size: 12px;
+  }
+}
+
+/* MODO HORIZONTAL */
+
+@media screen and (max-height: 500px) and (max-width: 900px) {
+  body {
+    min-height: 100vh;
+  }
+
+  #card {
+    max-height: calc(100dvh - 16px);
+    top: 50%;
+  }
+
+  #card .side.two {
+    overflow-y: auto;
+  }
+}
